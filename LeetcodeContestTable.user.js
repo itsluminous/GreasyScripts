@@ -7,6 +7,9 @@
 // @match        https://leetcode.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=leetcode.com
 // @grant        none
+// @license      GNU GPLv3 
+// @downloadURL https://update.greasyfork.org/scripts/494272/Leetcode%20contest%20table.user.js
+// @updateURL https://update.greasyfork.org/scripts/494272/Leetcode%20contest%20table.meta.js
 // ==/UserScript==
 
 async function getUserName() {
@@ -29,7 +32,7 @@ async function getUserName() {
     .then(res => res.data.userStatus.username);
 
     return username;
-};
+}
 
 async function getContestInfo(theusername) {
     // Query for getting the contest stats
@@ -52,7 +55,7 @@ async function getContestInfo(theusername) {
     .then(res => res.data.userContestRankingHistory);
 
     return data
-};
+}
 
 // Apply alternating row background colors
 function alternatingRowBackground(table) {
@@ -328,7 +331,7 @@ async function execute(){
         // fetch contest details
         var theusername = await getUserName();
         var contestdata = await getContestInfo(theusername);
-        var participatedContestData = contestdata.filter((entry) => entry.attended == true && entry.ranking != 0)
+        var participatedContestData = contestdata.filter((entry) => entry.attended == true && entry.ranking != 0);
 
         // Create and append table to the document body
         addTableCSS();
